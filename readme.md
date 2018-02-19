@@ -56,7 +56,7 @@ $ cd git-workshop
 $ git init
 ```
 
-> You can name the folder whatever you would like.
+> You can name the folder whatever you would like. `$` will be used to indicate the start of the command prompt
 
 You should see something like this:
 
@@ -105,6 +105,16 @@ $ git checkout -b feature-update-hello
 - Stage the changes
 - Commit the changes
 
+### Git diff aside
+
+- Make another change to `hello.txt`
+- **Before staging and committing** Run this command:
+```
+$ git diff
+```
+
+What does git diff do?
+
 ## Merging - We do
 
 How do we merge our changes with the `master` branch? `git merge`
@@ -113,3 +123,68 @@ How do we merge our changes with the `master` branch? `git merge`
 $ git checkout master
 $ git merge feature-update-hello
 ```
+
+you should see something like this depending on what you edited: 
+
+```
+Updating bd9e339..c9f4b8c
+Fast-forward
+ hello.txt | 1 +
+ 1 file changed, 1 insertion(+)
+```
+
+## Git logs
+
+We've made a couple of commits at this point. In order to see a history of the changes we've made, we can run `git log`
+
+```
+$ git log
+commit c9f4b8c355e2604149e4a6a20d7e042507cb9cac
+Author: Andy <andrew.sunglae.kim@gmail.com>
+Date:   Sun Feb 18 22:22:00 2018 -0500
+
+    updates
+
+commit bd9e339bf4242c7fd47c3e8b89af917ffee57503
+Author: Andy <andrew.sunglae.kim@gmail.com>
+Date:   Sun Feb 18 22:21:37 2018 -0500
+
+    initial commit
+
+```
+
+It may look diferrent than your's, but the same types of information are present.
+
+In reverse chronological order(most recent commits first):
+- git SHA-1 checksum
+- author's name and email
+- Date
+- commit message
+
+> Check out the end of the lesson plan for a quick reference on how to pretty the PS1. 
+
+The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in your projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
+
+## MERGE CONFLICTS
+
+> Stop. Take a breath. Don't run. Don't be afraid. Except ... be a little afraid.
+
+Merge conflicts are a reality of development. They will happen and frequently. 
+
+First off, How do merge conflicts occur? They occur when two branches are merging and both branches change the same file.
+
+## We do - CREATE THE CONFLICT
+
+Since we have recently merged `feature-update-hello`. The history of `master` and `feature-update-hello` should be identical. 
+
+```
+$ git checkout master
+$ echo "master changes" > hello.txt
+$ git add hello.txt
+$ git commit -m "changes hello.txt with master changes"
+$ git checkout feature-update-hello
+$ echo "feature branch changes" > hello.txt
+$ git add hello.txt
+$ git commit -m "changes hello.txt with feature branch changes"
+```
+> **Don't** do this step in an actual merge conflict. 
