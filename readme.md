@@ -51,8 +51,8 @@ Lets GIT started .... open your terminal.
 Creating a git repository:
 
 ```bash
-$ mkdir git-workshop
-$ cd git-workshop
+$ mkdir git_workshop
+$ cd git_workshop
 $ git init
 ```
 
@@ -61,7 +61,7 @@ $ git init
 You should see something like this:
 
 ```
-Initialized empty Git repository in /Path/to/git-workshop/.git/
+Initialized empty Git repository in /Path/to/git_workshop/.git/
 ```
 
 Create a file and add some content to it:
@@ -239,7 +239,7 @@ The one we'll use today is `reset`. The most common use case for `reset` is doin
 
 > We plan on going into a lot more detail into commands like this one in a more advanced git workshop. Where we'll see the differences between `checkout`, `reset`, and `revert`.
 
-### ** DANGER ** The following deletes your history.
+### ** \*DANGER\* ** The following deletes your history.
 You would only use this to remove part of your history.
 
 Let's say we we're working on a feature. We've realized 3 commits in that we've totally botched the architecture and want to rewind those last 3 commits. We might do something like this(Don't do this if you're just reading along):
@@ -254,4 +254,75 @@ This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in hi
 > the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
 
 ### You do
-Make 3 commits, follow the directions [above](#commitYouDo) if you are unsure what to do.
+Make 3 commits, follow the directions [above](#commitYouDo) if you are unsure what to do. Doesn't matter what the content is since we will be rewinding it.
+
+Then run:
+```
+$ git reset --hard HEAD~3
+```
+
+## Remote Repositories
+Everything we've done thus far has been done on our computers, in a *local* repository. Remote repositories live in places that are not our local machine. Hosting services, like Github and Bitbucket, allow us to place our repositories on the internet.
+
+Run the following command:
+```
+git remote -v
+```
+
+If you've been following along from the beginning then you should see ... nothing. `git remote -v` lists all of our remote connections. Since we don't have any yet, we don't see any yet. Let's fix that.
+
+- Navigate to [Github](https://github.com/).
+- Log in to your personal account.
+- Click on the plus sign in the top right, then click 'New Repository'
+- Fill in Repository name with `github_workshop` or whatever your folder name is. It literally can be whatever you want, but for consistency it should be the same as your working directory.
+- Click 'Create repository'
+
+At this point we have created a brand new empty git repository on Github. We want to connect our local repository to this online.
+
+In the middle of this screen you should see an option to do something like this only it will have your username and a different repository name:
+
+<img src="adding_remote.png" style="width: 70%;"/>
+
+To add the repository we just made on Github to our local repository. Let's run that first command:
+
+```
+git remote add origin git@github.com:someUserName/git_workshop.git
+```
+
+> if you don't have SSH setup, check [this out](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+
+This adds a remote connection from the local repository on our computer to the remote repository we just created on Github. If you run `git remote -v` now. You may see something like this:
+
+```
+$ git remote -v
+origin	git@github.com:someUserName/git_workshop.git (fetch)
+origin	git@github.com:someUserName/git_workshop.git (push)
+```
+
+Then run the next command Github gives us:
+
+```
+$ git push -u origin master
+```
+
+> Wow! Our code is available online and anyone can access it given the url.
+
+This will set the default push to origin(remote name) master(branch name). This will make the once empty repository on Github, and more or less change it to a cloned version of your local repository.
+
+We now have our code living in two places. `local` on our machines and a `remote` one living on github.
+
+Another developer comes along and says, 'Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well'
+
+Let's stop a moment. Consider what we've learned so far. Stop and think about the following questions for 2 minutes
+
+- how many copies of this repository will exist when a second developer joins you?
+- How might branching help alleviate some headaches in communication between you and another developer?
+
+Now pair and chat about your answers for the next 3 minutes.
+
+## The Holy War
+There are holy wars fought over so many things in programming. Git workflows is definitely one that many have strong opinions about. Regardless of stance, here's a quick pattern that illustrates some of the key features with github.
+
+> We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ cd ~/temp`
+
+We want to contribute to [git_workshop](https://github.com/andrewsunglaekim/git_workshop) so we clone it down
