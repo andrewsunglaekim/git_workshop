@@ -320,15 +320,15 @@ Let's stop a moment. Consider what we've learned so far. Stop and think about th
 
 Now pair and chat about your answers for the next 3 minutes.
 
-## The Holy War
+## The Holy War - Git Workflows
 There are holy wars fought over so many things in programming. Git workflows is definitely one that many have strong opinions about. Regardless of stance, here's a quick pattern that illustrates some of the key features with github.
 
 > We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ cd ~/temp`
 
-We want to contribute to git_workshop so we clone the repository that lives online.
+We want to contribute to git_workshop so we clone the repository that we created earlier on github.
 
 ```
-$ git clone git@github.com:someUsername/git_workshop.git
+$ git clone git@github.com:yourUsername/git_workshop.git
 $ cd git_workshop
 ```
 
@@ -353,3 +353,10 @@ Then we submit a pull request on Github's interface.
 <img src="create_pull_request.png" style="width: 70%;"/>
 
 - make sure the left branch(base) is `master` and the right branch(compare) is `new-feature`
+- click Create pull request then again.
+
+Now we can go in and merge the PR.
+
+> If we unsure the `new-feature` branch is not up to date with `master` when we are pushing, then we need to make sure we pull in remote changes using `$ git pull` before pushing.
+
+Always make sure your `feature` branch is up to date with whatever the clean version of your code.
