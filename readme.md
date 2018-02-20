@@ -77,6 +77,8 @@ Stage it:
 $ git add hello.txt
 ```
 
+> We first need to stage changes before committing them. Only the staged changes get committed.
+
 Commit it:
 
 ```bash
@@ -87,7 +89,7 @@ $ git commit -m "git init; adds hello.txt"
 
 ## Branching
 
-Well this is amazing, we're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. Every team probably practices these workflows a bit differently, but everyone uses branches in order to solve this problem. 
+Well this is amazing, we're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. Every team probably practices these workflows a bit differently, but everyone uses branches in order to solve this problem.
 
 Branches quite literally point to a commit. Turns out we can branch locally as well.
 
@@ -97,7 +99,7 @@ Creating a git branch
 $ git checkout -b feature-update-hello
 ```
 
-> `feature-update-hello` is the name of the new branch were checking out. 
+> `feature-update-hello` is the name of the new branch were checking out from the master branch.
 
 ### You do - Commit a change to `hello.txt`
 
@@ -115,6 +117,8 @@ $ git diff
 
 What does git diff do?
 
+> Don't forget to finish staging and commiting after `git diff`
+
 ## Merging - We do
 
 How do we merge our changes with the `master` branch? `git merge`
@@ -124,7 +128,7 @@ $ git checkout master
 $ git merge feature-update-hello
 ```
 
-you should see something like this depending on what you edited: 
+you should see something like this depending on what you edited:
 
 ```
 Updating bd9e339..c9f4b8c
@@ -153,15 +157,15 @@ Date:   Sun Feb 18 22:21:37 2018 -0500
 
 ```
 
-It may look diferrent than your's, but the same types of information are present.
+It may look different than yours, but the same types of information are present.
 
-In reverse chronological order(most recent commits first):
+In reverse chronological order(most recent commits first) each commit contains:
 - git SHA-1 checksum
 - author's name and email
 - Date
 - commit message
 
-> Check out the end of the lesson plan for a quick reference on how to pretty the PS1. 
+> Check out the end of the lesson plan for a quick reference on how to pretty the PS1.
 
 The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in your projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
 
@@ -169,13 +173,13 @@ The important thing to note here is the `git SHA-1 checksum` but that's getting 
 
 > Stop. Take a breath. Don't run. Don't be afraid. Except ... be a little afraid.
 
-Merge conflicts are a reality of development. They will happen and frequently. 
+Merge conflicts are a reality of development. They will happen and frequently.
 
 First off, How do merge conflicts occur? They occur when two branches are merging and both branches change the same file.
 
 ## We do - CREATE THE CONFLICT
 
-Since we have recently merged `feature-update-hello`. The history of `master` and `feature-update-hello` should be identical. 
+Since we have recently merged `feature-update-hello`. The history of `master` and `feature-update-hello` should be identical.
 
 ```
 $ git checkout master
@@ -187,4 +191,31 @@ $ echo "feature branch changes" > hello.txt
 $ git add hello.txt
 $ git commit -m "changes hello.txt with feature branch changes"
 ```
-> **Don't** do this step in an actual merge conflict. 
+> **Don't** do this step in an actual merge conflict.
+
+If you open `hello.txt` you can see the conflict. It should look something like this:
+
+```
+<<<<<<< HEAD
+master changes
+=======
+feature branch changes
+>>>>>>> test
+```
+
+Let's say we wanted to keep master's changes. We just delete all the conflict text (ie. `<`, `>` `=`). And delete any feature branch text. So we would be left with:
+
+```
+master changes
+```
+
+> You can literally change the file to anything. Most of the time we'll choose 1 side over another rather than putting brand new code.
+
+We resolve the conflict by staging and committing the fixed file(the one that had the conflict).
+
+```bash
+$ git add hello.txt
+$ git commit -m "fixes merge conflict in hello.txt"
+```
+
+##
