@@ -101,7 +101,16 @@ $ git checkout -b feature-update-hello
 
 > `feature-update-hello` is the name of the new branch were checking out from the master branch.
 
-### You do - Commit a change to `hello.txt`
+We can now checkout to whichever branch we want to be in:
+
+```
+$ git checkout master
+$ git checkout feature-update-hello
+```
+
+> Make sure you are in the `feature-update-hello` branch before moving on.
+
+### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt`
 
 - Make edits to `hello.txt`
 - Stage the changes
@@ -117,7 +126,7 @@ $ git diff
 
 What does git diff do?
 
-> Don't forget to finish staging and commiting after `git diff`
+> Don't forget to finish staging and committing after `git diff`
 
 ## Merging - We do
 
@@ -218,4 +227,31 @@ $ git add hello.txt
 $ git commit -m "fixes merge conflict in hello.txt"
 ```
 
-##
+## Reset - You do
+There are lots of ways to change the HEAD or the history of a branch.
+
+`HEAD` - the current branch
+`checkout` - switch branches or restore working tree files
+`reset` - resets the current HEAD to the specified state
+`revert` - revert the changes that the related patches introduce, records new commits.
+
+The one we'll use today is `reset`. The most common use case for `reset` is doing work locally and wanting to rewind the work you've done
+
+> We plan on going into a lot more detail into commands like this one in a more advanced git workshop. Where we'll see the differences between `checkout`, `reset`, and `revert`.
+
+### ** DANGER ** The following deletes your history.
+You would only use this to remove part of your history.
+
+Let's say we we're working on a feature. We've realized 3 commits in that we've totally botched the architecture and want to rewind those last 3 commits. We might do something like this(Don't do this if you're just reading along):
+
+```
+//** WARNING: this will delete history **/
+$ git reset --hard HEAD~3
+```
+
+This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in history(mostly). If we are thinking about using this command, we need to definitively know why we are using it. It never hurts to ask someone before doing a command like the one above.
+
+> the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
+
+### You do
+Make 3 commits, follow the directions [above](#commitYouDo) if you are unsure what to do.
