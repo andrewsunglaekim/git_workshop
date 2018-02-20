@@ -325,4 +325,22 @@ There are holy wars fought over so many things in programming. Git workflows is 
 
 > We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ cd ~/temp`
 
-We want to contribute to [git_workshop](https://github.com/andrewsunglaekim/git_workshop) so we clone it down
+We want to contribute to git_workshop so we clone the repository that lives online.
+
+```
+$ git clone git@github.com:someUsername/git_workshop.git
+$ cd git_workshop
+```
+
+
+It is often a good idea to keep certain branches clean. Testing and production branches are good examples. The idea is that no one should be able to push directly to these branches. In any case, `master` will be our clean branch. So in order awgrawto contribute I would need to push to a different branch.
+
+```
+$ git checkout -b new-feature
+$ echo "this will be the PR" > hello.txt
+$ git add hello.txt
+$ git commit -m "changes text for PR"
+$ git push origin new-feature
+```
+
+The only thing new here is the last line, and we've seen this before as well. `git push origin new-feature` will push the current branch that we are on to `origin`(remote repository) `new-feature`(branch name)awegawr
