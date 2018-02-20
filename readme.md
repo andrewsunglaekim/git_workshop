@@ -351,4 +351,5 @@ Then we submit a pull request on Github's interface.
 - click on New Pull request
 
 <img src="create_pull_request.png" style="width: 70%;"/>
--
+
+- make sure the left branch(base) is `master` and the right branch(compare) is `new-feature`
