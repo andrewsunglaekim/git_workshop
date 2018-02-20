@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 master changes
-<<<<<<< HEAD
 some more chansges being changed
 some further chasdafawnges
 more stuff
-=======
-=======
-feature branch changes
->>>>>>> test
->>>>>>> parent of b213f8b... updates
