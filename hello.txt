@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 master changes
+=======
+feature branch changes
+>>>>>>> test
