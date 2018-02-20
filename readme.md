@@ -333,7 +333,7 @@ $ cd git_workshop
 ```
 
 
-It is often a good idea to keep certain branches clean. Testing and production branches are good examples. The idea is that no one should be able to push directly to these branches. In any case, `master` will be our clean branch. So in order awgrawto contribute I would need to push to a different branch.
+It is often a good idea to keep certain branches clean. Testing and production branches are good examples. The idea is that no one should be able to push directly to these branches. In any case, `master` will be our clean branch. So in order to contribute I would need to push to a different branch.
 
 ```
 $ git checkout -b new-feature
@@ -343,4 +343,12 @@ $ git commit -m "changes text for PR"
 $ git push origin new-feature
 ```
 
-The only thing new here is the last line, and we've seen this before as well. `git push origin new-feature` will push the current branch that we are on to `origin`(remote repository) `new-feature`(branch name)awegawr
+The only thing new here is the last line, and we've seen this before as well. `git push origin new-feature` will push the current branch that we are on to `origin`(remote repository) `new-feature`(branch name)
+
+Then we submit a pull request on Github's interface.
+
+- click on the Pull requests tab
+- click on New Pull request
+
+<img src="create_pull_request.png" style="width: 70%;"/>
+-
