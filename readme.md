@@ -45,7 +45,7 @@ Then share with someone sitting next to you about your thoughts.
 
 > There will be more defintions, we'll spread them throughout the lesson but also conglomerate them into an appendix at the bottom of this lesson.
 
-## Local git - We do
+## Local git - We do (5/25)
 Lets GIT started .... open your terminal.
 
 Creating a git repository:
@@ -63,6 +63,8 @@ You should see something like this:
 ```
 Initialized empty Git repository in /Path/to/git_workshop/.git/
 ```
+
+> This created a git repository for us in the `git_workshop` directory.
 
 Create a file and add some content to it:
 
@@ -87,13 +89,13 @@ $ git commit -m "git init; adds hello.txt"
 
 > Commit commands must always be accompanied by a commit message. Generally try to write commit messages in the imperative. As when you check out to a commit, you are "executing" that commit message
 
-## Branching
+## Branching (5/30)
 
-Well this is amazing, we're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. Every team probably practices these workflows a bit differently, but everyone uses branches in order to solve this problem.
+We're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. Every team probably practices these workflows a bit differently, but everyone uses branches in order to solve this problem.
 
-Branches quite literally point to a commit. Turns out we can branch locally as well.
+Branches quite literally point to a commit. They will be a place we can track the history of our `feature` branch separate from `master`.
 
-Creating a git branch
+Turns out we can branch locally as well. Creating a git branch using `git checkout -b branch-name`:
 
 ```bash
 $ git checkout -b feature-update-hello
@@ -110,7 +112,7 @@ $ git checkout feature-update-hello
 
 > Make sure you are in the `feature-update-hello` branch before moving on.
 
-### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt`
+### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (10/40)
 
 - Make edits to `hello.txt`
 - Stage the changes
@@ -128,7 +130,8 @@ What does git diff do?
 
 > Don't forget to finish staging and committing after `git diff`
 
-## Merging - We do
+## Merging - We do (10/50)
+Let's say we've got some good things going with our `feature` branch and we want those things in `master`.
 
 How do we merge our changes with the `master` branch? `git merge`
 
@@ -146,7 +149,7 @@ Fast-forward
  1 file changed, 1 insertion(+)
 ```
 
-## Git logs
+## Git logs (5/55)
 
 We've made a couple of commits at this point. In order to see a history of the changes we've made, we can run `git log`
 
@@ -178,15 +181,17 @@ In reverse chronological order(most recent commits first) each commit contains:
 
 The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in your projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
 
-## MERGE CONFLICTS
+## MERGE CONFLICTS (15/70)
 
 > Stop. Take a breath. Don't run. Don't be afraid. Except ... be a little afraid.
 
 Merge conflicts are a reality of development. They will happen and frequently.
 
-First off, How do merge conflicts occur? They occur when two branches are merging and both branches change the same file.
+First off, How do merge conflicts occur? They occur when two branches are merging and both branches have changes to the same file(s).
 
 ## We do - CREATE THE CONFLICT
+
+> In this classroom setting, we are faking a merge conflict. The following is how to create a merge conflict, but should be noted that we won't do/see something like this in the event an actual merge conflict might arise.
 
 Since we have recently merged `feature-update-hello`. The history of `master` and `feature-update-hello` should be identical.
 
@@ -227,7 +232,7 @@ $ git add hello.txt
 $ git commit -m "fixes merge conflict in hello.txt"
 ```
 
-## Reset - You do
+## Reset - You do (10/75)
 There are lots of ways to change the HEAD or the history of a branch.
 
 `HEAD` - the current branch
@@ -253,8 +258,8 @@ This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in hi
 
 > the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
 
-### You do
-Make 3 commits, follow the directions [above](#commitYouDo) if you are unsure what to do. Doesn't matter what the content is since we will be rewinding it.
+### You do (10/85)
+Make 3 commits, follow the directions from the [above](#commitYouDo) commit section if you are unsure what to do. Doesn't matter what the content is since we will be rewinding it.
 
 Then run:
 ```
@@ -274,10 +279,10 @@ If you've been following along from the beginning then you should see ... nothin
 - Navigate to [Github](https://github.com/).
 - Log in to your personal account.
 - Click on the plus sign in the top right, then click 'New Repository'
-- Fill in Repository name with `github_workshop` or whatever your folder name is. It literally can be whatever you want, but for consistency it should be the same as your working directory.
+- Fill in Repository name with `github_workshop` or whatever your folder name is. It literally can be whatever you want, but for consistency it should be the same as your local repositories working directory.
 - Click 'Create repository'
 
-At this point we have created a brand new empty git repository on Github. We want to connect our local repository to this online.
+At this point we have created a brand new empty git repository on Github. We want to connect our local repository(our machine) to the remote repository(github).
 
 In the middle of this screen you should see an option to do something like this only it will have your username and a different repository name:
 
@@ -286,10 +291,10 @@ In the middle of this screen you should see an option to do something like this 
 To add the repository we just made on Github to our local repository. Let's run that first command:
 
 ```
-git remote add origin git@github.com:someUserName/git_workshop.git
+$ git remote add origin git@github.com:someUserName/git_workshop.git
 ```
 
-> if you don't have SSH setup, check [this out](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+> if you don't have SSH setup, [check this out](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
 This adds a remote connection from the local repository on our computer to the remote repository we just created on Github. If you run `git remote -v` now. You may see something like this:
 
@@ -315,15 +320,15 @@ Another developer comes along and says, 'Hey, I would like to develop on the [gi
 
 Let's stop a moment. Consider what we've learned so far. Stop and think about the following questions for 2 minutes
 
-- how many copies of this repository will exist when a second developer joins you?
+- How many copies of this repository will exist when a second developer joins you?
 - How might branching help alleviate some headaches in communication between you and another developer?
 
 Now pair and chat about your answers for the next 3 minutes.
 
-## The Holy War - Git Workflows
+## The Holy War - Git Workflows (10/95)
 There are holy wars fought over so many things in programming. Git workflows is definitely one that many have strong opinions about. Regardless of stance, here's a quick pattern that illustrates some of the key features with github.
 
-> We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ cd ~/temp`
+> We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ mkdir ~/temp && cd ~/temp`
 
 We want to contribute to git_workshop so we clone the repository that we created earlier on github.
 
@@ -360,3 +365,24 @@ Now we can go in and merge the PR.
 > If we unsure the `new-feature` branch is not up to date with `master` when we are pushing, then we need to make sure we pull in remote changes using `$ git pull` before pushing.
 
 Always make sure your `feature` branch is up to date with whatever the clean version of your code.
+
+## Final collaboration - You do (15/110)
+
+Find a partner, if you don't have one, find an existing pair to work with.
+
+> The series of directions will have `Person A` and `Person B` do certain things with version control. One of you will be `Person A` and one will be `Person B` if you have time, consider switching and doing the exercise again.
+
+- `Person A` creates a local git repository
+- `Person A` commits some changes to the repository
+- `Person A` creates a remote repository
+- `Person A` pushes local repository to remote repository
+- `Person B` clones the remote repository to their local machine
+- `Person B` checks out to a different branch
+- `Person B` commits changes
+- `Person B` pushes changes to the remote repository's branch
+> you may need to add your partner as a collaborator, check your settings under your project repo.
+
+- `Person B` submits pull request
+- `Person A` accepts/rejects pull request
+
+## Questions (10/120)
