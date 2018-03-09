@@ -9,6 +9,11 @@
 
 - Define version control and identify what problems it solves for developers
 - Define a repository (aka repo) is, and identify what the parts of a repo are
+- Create a git repository
+- Create a git branch
+- Stage changes
+- Commit changes
+- Resolve merge conflicts
 - Differentiate between a local repository and a remote repository
 - Synchronize a local repository with a remote repository using git with Github
 
@@ -26,8 +31,9 @@ Think about the following questions for 2 minutes:
 - What are some strategies you've used in the past? (outside of VC)
 - What problems, if any, did you encounter?
 - How can version control software be leveraged to solve these problems?
+- If you use git already, how has it helped you?
 
-Then share with someone sitting next to you about your thoughts.
+Then share with someone sitting next to you about your thoughts for 3 minutes.
 
 ## Git - Git solves problems. 5/20
 - I wrote some code to implement a feature, but I broke a bunch of stuff in the process. **I want to be able to go back in time to a point where my code works!**
@@ -232,12 +238,16 @@ $ git add hello.txt
 $ git commit -m "fixes merge conflict in hello.txt"
 ```
 
-## Reset - You do (10/75)
+## Reset - You do (10/80)
 There are lots of ways to change the HEAD or the history of a branch.
 
+### Definitions
 `HEAD` - the current branch
+
 `checkout` - switch branches or restore working tree files
+
 `reset` - resets the current HEAD to the specified state
+
 `revert` - revert the changes that the related patches introduce, records new commits.
 
 The one we'll use today is `reset`. The most common use case for `reset` is doing work locally and wanting to rewind the work you've done
