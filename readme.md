@@ -11,11 +11,14 @@
 - Define a repository (aka repo) is, and identify what the parts of a repo are
 - Create a git repository
 - Create a git branch
+- Identify the purpose of the staging area
 - Stage changes
 - Commit changes
 - Resolve merge conflicts
 - Differentiate between a local repository and a remote repository
 - Synchronize a local repository with a remote repository using git with Github
+- Reset git commits
+
 
 ## Framing (5/10)
 
@@ -50,6 +53,8 @@ Then share with someone sitting next to you about your thoughts for 3 minutes.
 - the index - also called the staging area. It is where we add changes to be committed
 
 > There will be more defintions, we'll spread them throughout the lesson but also conglomerate them into an appendix at the bottom of this lesson.
+
+> Another note about today's workshop. There are many IDE's out there that allow us to do various git tasks a bit more efficiently for us than the CLI. The intent of this workshop is to familiarize us with what's happening with git underneath all the IDE niceties.
 
 ## Local git - We do (5/25)
 Lets GIT started .... open your terminal.
@@ -86,6 +91,15 @@ $ git add hello.txt
 ```
 
 > We first need to stage changes before committing them. Only the staged changes get committed.
+
+### The index
+
+The index is the place we place the revisions in our files before we `commit` them to the repository.
+
+Why should we stage things? It's hard to see as we currently are only staging 1 file at this time. Imagine we were in a code base where we've made 20 revisions to several file. What if we only want some of those changes to be saved. It'd be really nice to be able save some of the changes but discard the rest.
+
+### Committing
+Committing changes essentially "saves" a version of your code.
 
 Commit it:
 
@@ -268,13 +282,15 @@ This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in hi
 
 > the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
 
-### You do (10/85)
+### You do (10/90)
 Make 3 commits, follow the directions from the [above](#commitYouDo) commit section if you are unsure what to do. Doesn't matter what the content is since we will be rewinding it.
 
 Then run:
 ```
 $ git reset --hard HEAD~3
 ```
+
+> You should be exactly where you started.
 
 ## Remote Repositories
 Everything we've done thus far has been done on our computers, in a *local* repository. Remote repositories live in places that are not our local machine. Hosting services, like Github and Bitbucket, allow us to place our repositories on the internet.
@@ -335,7 +351,7 @@ Let's stop a moment. Consider what we've learned so far. Stop and think about th
 
 Now pair and chat about your answers for the next 3 minutes.
 
-## The Holy War - Git Workflows (10/95)
+## The Holy War - Git Workflows (10/100)
 There are holy wars fought over so many things in programming. Git workflows is definitely one that many have strong opinions about. Regardless of stance, here's a quick pattern that illustrates some of the key features with github.
 
 > We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ mkdir ~/temp && cd ~/temp`
@@ -376,7 +392,7 @@ Now we can go in and merge the PR.
 
 Always make sure your `feature` branch is up to date with whatever the clean version of your code.
 
-## Final collaboration - You do (15/110)
+## Final collaboration - You do (15/115)
 
 Find a partner, if you don't have one, find an existing pair to work with.
 
@@ -395,4 +411,11 @@ Find a partner, if you don't have one, find an existing pair to work with.
 - `Person B` submits pull request
 - `Person A` accepts/rejects pull request
 
-## Questions (10/120)
+## Questions (5/120)
+
+## Additional Info
+
+### [Setting up SSH](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+### [Pretty PS1 prompt](https://coderwall.com/p/pn8f0g/show-your-git-status-and-branch-in-color-at-the-command-prompt)
+
+## Appendix
