@@ -15,9 +15,9 @@
 - Stage changes
 - Commit changes
 - Resolve merge conflicts
+- Reset git commits
 - Differentiate between a local repository and a remote repository
 - Synchronize a local repository with a remote repository using git with Github
-- Reset git commits
 
 
 ## Framing (5/10)
@@ -34,7 +34,7 @@ Think about the following questions for 2 minutes:
 - What are some strategies you've used in the past? (outside of VC)
 - What problems, if any, did you encounter?
 - How can version control software be leveraged to solve these problems?
-- If you use git already, how has it helped you?
+- If you use git already, how has it helped you? what do you wish it could do better?
 
 Then share with someone sitting next to you about your thoughts for 3 minutes.
 
@@ -52,7 +52,7 @@ Then share with someone sitting next to you about your thoughts for 3 minutes.
 - Branch - A branch in Git is simply a lightweight movable pointer to one of these commits.
 - the index - also called the staging area. It is where we add changes to be committed
 
-> There will be more defintions, we'll spread them throughout the lesson but also conglomerate them into an appendix at the bottom of this lesson.
+> There will be more definitions, we'll spread them throughout the lesson but also conglomerate them into an appendix at the bottom of this lesson.
 
 > Another note about today's workshop. There are many IDE's out there that allow us to do various git tasks a bit more efficiently for us than the CLI. The intent of this workshop is to familiarize us with what's happening with git underneath all the IDE niceties.
 
@@ -82,13 +82,19 @@ Create a file and add some content to it:
 ```bash
 $ touch hello.txt
 $ echo "hello" > hello.txt
+$ git status
 ```
 
 Stage it:
 
 ```bash
 $ git add hello.txt
+$ git status
 ```
+
+### `git status`
+
+`git status` is a command to get an overview of changes we've made to our working tree. It shows us if files have changed from the current version and additionally whether those changes have been sent to the index("staged") or not.
 
 > We first need to stage changes before committing them. Only the staged changes get committed.
 
@@ -224,6 +230,8 @@ $ git checkout feature-update-hello
 $ echo "feature branch changes" > hello.txt
 $ git add hello.txt
 $ git commit -m "changes hello.txt with feature branch changes"
+$ git checkout master
+$ git merge feature-update-hello
 ```
 > **Don't** do this step in an actual merge conflict.
 
@@ -268,7 +276,7 @@ The one we'll use today is `reset`. The most common use case for `reset` is doin
 
 > We plan on going into a lot more detail into commands like this one in a more advanced git workshop. Where we'll see the differences between `checkout`, `reset`, and `revert`.
 
-### ** \*DANGER\* ** The following deletes your history.
+### ** \*DANGER\* ** The following can delete your history.
 You would only use this to remove part of your history.
 
 Let's say we we're working on a feature. We've realized 3 commits in that we've totally botched the architecture and want to rewind those last 3 commits. We might do something like this(Don't do this if you're just reading along):
@@ -418,4 +426,18 @@ Find a partner, if you don't have one, find an existing pair to work with.
 ### [Setting up SSH](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 ### [Pretty PS1 prompt](https://coderwall.com/p/pn8f0g/show-your-git-status-and-branch-in-color-at-the-command-prompt)
 
-## Appendix
+## Appendix - Definitions
+- Git - It is version control software. Today we'll be using the CLI to use git.
+- Repositories - Git stores information about a project in a data structure called a repository.
+- Commit - records changes to the repository
+- Branch - A branch in Git is simply a lightweight movable pointer to one of these commits.
+- the index - also called the staging area. It is where we add changes to be committed
+- checkout - changing branches, moving the pointer to a different git sha
+- merge - combine branches
+- git SHA - unique identifier for a commit
+- merge conflict - When two branches that are merging have changes to the same file(s)
+- HEAD - the current branch
+- reset - resets current HEAD to specified state
+- revert - revert the changes that the related patch introduces, then records new commits.
+- remote(repo) - Remote repositories are versions of your project that are hosted on the Internet or network somewhere.
+- origin - an alias for a remote repository, it can literally be called anything else and would work the same way. There are no requirement to name a remote repository origin.
