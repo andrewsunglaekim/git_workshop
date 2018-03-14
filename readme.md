@@ -1,5 +1,6 @@
 # Git Workshop
 
+<img src="http://placecage.com/200/200" style="width: 70%;"/>
 ## Preferred Requirements
 
 - Basic CLI
@@ -251,7 +252,7 @@ Let's say we wanted to keep master's changes. We just delete all the conflict te
 master changes
 ```
 
-> You can literally change the file to anything. Most of the time we'll choose 1 side over another rather than putting brand new code.
+> You can literally change the file to anything. Most of the time we'll choose 1 side over another rather than putting brand new code. IDE's can make this really easy.
 
 We resolve the conflict by staging and committing the fixed file(the one that had the conflict).
 
