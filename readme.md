@@ -102,7 +102,7 @@ $ git status
 
 The index is the place we place the revisions in our files before we `commit` them to the repository.
 
-Why should we stage things? It's hard to see as we currently are only staging 1 file at this time. Imagine we were in a code base where we've made 20 revisions to several file. What if we only want some of those changes to be saved. It'd be really nice to be able save some of the changes but discard the rest.
+Why should we stage things? It's hard to see as we currently are only staging 1 file at this time. Imagine we were in a code base where we've made 20 revisions to several files. What if we only want some of those changes to be saved. It'd be really nice to be able save some of the changes but discard the rest.
 
 ### Committing
 Committing changes essentially "saves" a version of your code.
@@ -274,7 +274,7 @@ There are lots of ways to change the HEAD or the history of a branch.
 
 The one we'll use today is `reset`. The most common use case for `reset` is doing work locally and wanting to rewind the work you've done
 
-> We plan on going into a lot more detail into commands like this one in a more advanced git workshop. Where we'll see the differences between `checkout`, `reset`, and `revert`.
+> There is a more advanced git workshop, where we see the differences between `checkout`, `reset`, and `revert` on our [RV Udemy site]().
 
 ### ** \*DANGER\* ** The following can delete your history.
 You would only use this to remove part of your history.
