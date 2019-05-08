@@ -20,31 +20,20 @@
 - Synchronize a local repository with a remote repository using git with Github
 
 
-## Framing (5/10)
+## Framing (7/7)
 
-Simply put, version control is a way of *tracking changes* made to a file or group of files over time.
+It's very likely that each of us has tried to keep track of changes made to a file by creating different versions of a file. This however can be messy or complicated especially when working in teams.
 
-It's very likely that each of us has tried to keep track of changes made to a file by creating different versions of that file. This however can be messy or complicated especially when working in teams.
+Simply put, version control is a way of **tracking changes** made to a file or group of files over time.
 
-### Think Pair Share 5/15
 
-Think about the following questions for 2 minutes:
-
-- What are some reasons we might want different versions of a project?
-- What are some strategies you've used in the past? (outside of VC)
-- What problems, if any, did you encounter?
-- How can version control software be leveraged to solve these problems?
-- If you use git already, how has it helped you? what do you wish it could do better?
-
-Then share with someone sitting next to you about your thoughts for 3 minutes.
-
-## Git - Git solves problems. 5/20
+## Git - Git solves problems
 - I wrote some code to implement a feature, but I broke a bunch of stuff in the process. **I want to be able to go back in time to a point where my code works!**
 - I'm trying to see how my codebase or some files have changed over time. **I'd like to be able to compare various states of my files.**
 - I want to work on someone else's project, but don't want to break their code and ruin everything. **I want to have my own 'area' where I can try out code or build out a feature without adversely affecting another developer's project I'm working on.**
 - I'm working on a project with a team, and **I want to have an easy way to collaborate with my team**
 
-## Git - Some basic definitions
+## Some basic definitions (3/10)
 
 - Git - It is version control software. Today we'll be using the CLI to use git.
 - Repositories - Git stores information about a project in a data structure called a repository.
@@ -56,7 +45,7 @@ Then share with someone sitting next to you about your thoughts for 3 minutes.
 
 > Another note about today's workshop. There are many IDE's out there that allow us to do various git tasks a bit more efficiently for us than the CLI. The intent of this workshop is to familiarize us with what's happening with git underneath all the IDE niceties.
 
-## Local git - We do (5/25)
+## Local git - We do (5/15)
 Lets GIT started .... open your terminal.
 
 Creating a git repository:
@@ -115,13 +104,15 @@ $ git commit -m "git init; adds hello.txt"
 
 > Commit commands must always be accompanied by a commit message. Generally try to write commit messages in the imperative. As when you check out to a commit, you are "executing" that commit message
 
-## Branching (5/30)
+## Branching (5/20)
 
-We're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. Every team probably practices these workflows a bit differently, but everyone uses branches in order to solve this problem.
+We're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. There isn't one git workflow that works for all teams, but all teams uses branches in order to solve this problem.
 
-Branches quite literally point to a commit. They will be a place we can track the history of our `feature` branch separate from `master`.
+Branches quite literally point to a commit. They will be a place where we can track the history of our `feature` branch separate from `master`.
 
-Turns out we can branch locally as well. Creating a git branch using `git checkout -b branch-name`:
+Branches are simple to make on a local repository.
+
+Creating a git branch using `git checkout -b branch-name`:
 
 ```bash
 $ git checkout -b feature-update-hello
@@ -138,7 +129,7 @@ $ git checkout feature-update-hello
 
 > Make sure you are in the `feature-update-hello` branch before moving on.
 
-### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (10/40)
+### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (10/30)
 
 - Make edits to `hello.txt`
 - Stage the changes
@@ -156,7 +147,7 @@ What does git diff do?
 
 > Don't forget to finish staging and committing after `git diff`
 
-## Merging - We do (10/50)
+## Merging - We do (5/35)
 Let's say we've got some good things going with our `feature` branch and we want those things in `master`.
 
 How do we merge our changes with the `master` branch? `git merge`
@@ -166,7 +157,7 @@ $ git checkout master
 $ git merge feature-update-hello
 ```
 
-you should see something like this depending on what you edited:
+We should see something like this depending on what we edited:
 
 ```
 Updating bd9e339..c9f4b8c
@@ -175,7 +166,7 @@ Fast-forward
  1 file changed, 1 insertion(+)
 ```
 
-## Git logs (5/55)
+## Git logs (5/40)
 
 We've made a couple of commits at this point. In order to see a history of the changes we've made, we can run `git log`
 
@@ -205,9 +196,9 @@ In reverse chronological order(most recent commits first) each commit contains:
 
 > Check out the end of the lesson plan for a quick reference on how to pretty the PS1.
 
-The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in your projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
+The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in our projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
 
-## MERGE CONFLICTS (15/70)
+## MERGE CONFLICTS (15/55)
 
 > Stop. Take a breath. Don't run. Don't be afraid. Except ... be a little afraid.
 
@@ -233,9 +224,9 @@ $ git commit -m "changes hello.txt with feature branch changes"
 $ git checkout master
 $ git merge feature-update-hello
 ```
-> **Don't** do this step in an actual merge conflict.
+> **Don't** do this step in an actual merge conflict. We're just faking it so we can see a conflict.
 
-If you open `hello.txt` you can see the conflict. It should look something like this:
+If we open `hello.txt` we can see the conflict. It should look something like this:
 
 ```
 <<<<<<< HEAD
@@ -251,7 +242,7 @@ Let's say we wanted to keep master's changes. We just delete all the conflict te
 master changes
 ```
 
-> You can literally change the file to anything. Most of the time we'll choose 1 side over another rather than putting brand new code.
+> We can literally change the file to anything. Most of the time we'll choose 1 side over another rather than putting brand new code.
 
 We resolve the conflict by staging and committing the fixed file(the one that had the conflict).
 
@@ -272,9 +263,9 @@ There are lots of ways to change the HEAD or the history of a branch.
 
 `revert` - revert the changes that the related patches introduce, records new commits.
 
-The one we'll use today is `reset`. The most common use case for `reset` is doing work locally and wanting to rewind the work you've done
+The one we'll use today is `reset`. The most common use case for `reset` is doing work locally and wanting to rewind the work we've done
 
-> There is a more advanced git workshop, where we see the differences between `checkout`, `reset`, and `revert` on our [RV Udemy site]().
+> There is a more advanced git workshop, where we see the differences between `checkout`, `reset`, and `revert`. Check it out [here](https://github.com/andrewsunglaekim/advanced_git_workshop).
 
 ### ** \*DANGER\* ** The following can delete your history.
 You would only use this to remove part of your history.
@@ -291,14 +282,19 @@ This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in hi
 > the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
 
 ### You do (10/90)
-Make 3 commits, follow the directions from the [above](#commitYouDo) commit section if you are unsure what to do. Doesn't matter what the content is since we will be rewinding it.
+Make 3 commits, follow the directions from the [above](#commitYouDo) commit section if you are unsure what to do. It doesn't matter what the content is since we will be rewinding it.
 
 Then run:
 ```
 $ git reset --hard HEAD~3
 ```
 
-> You should be exactly where you started.
+What's happened to your history?
+
+<details>
+  <summary>Answer</summary>
+    You should be exactly where you started.
+</details>
 
 ## Remote Repositories
 Everything we've done thus far has been done on our computers, in a *local* repository. Remote repositories live in places that are not our local machine. Hosting services, like Github and Bitbucket, allow us to place our repositories on the internet.
