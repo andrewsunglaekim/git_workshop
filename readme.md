@@ -5,7 +5,7 @@
 - Basic CLI
 - a github account
 
-## Learning Objectives (5/5)
+## Learning Objectives (2/2)
 
 - Define version control and identify what problems it solves for developers
 - Define a repository (aka repo) is, and identify what the parts of a repo are
@@ -20,7 +20,7 @@
 - Synchronize a local repository with a remote repository using git with Github
 
 
-## Framing (7/7)
+## Framing (7/9)
 
 It's very likely that each of us has tried to keep track of changes made to a file by creating different versions of a file. This however can be messy or complicated especially when working in teams.
 
@@ -33,7 +33,7 @@ Simply put, version control is a way of **tracking changes** made to a file or g
 - I want to work on someone else's project, but don't want to break their code and ruin everything. **I want to have my own 'area' where I can try out code or build out a feature without adversely affecting another developer's project I'm working on.**
 - I'm working on a project with a team, and **I want to have an easy way to collaborate with my team**
 
-## Some basic definitions (3/10)
+## Some basic definitions getting started (3/12)
 
 - Git - It is version control software. Today we'll be using the CLI to use git.
 - Repositories - Git stores information about a project in a data structure called a repository.
@@ -45,7 +45,7 @@ Simply put, version control is a way of **tracking changes** made to a file or g
 
 > Another note about today's workshop. There are many IDE's out there that allow us to do various git tasks a bit more efficiently for us than the CLI. The intent of this workshop is to familiarize us with what's happening with git underneath all the IDE niceties.
 
-## Local git - We do (5/15)
+## Local git - We do (5/17)
 Lets GIT started .... open your terminal.
 
 Creating a git repository:
@@ -104,7 +104,7 @@ $ git commit -m "git init; adds hello.txt"
 
 > Commit commands must always be accompanied by a commit message. Generally try to write commit messages in the imperative. As when you check out to a commit, you are "executing" that commit message
 
-## Branching (5/20)
+## Branching (5/22)
 
 We're successfully tracking our extremely complicated project in git. As developers, we like to keep places in our projects that are "pristine" and protect it through code reviews. There isn't one git workflow that works for all teams, but all teams uses branches in order to solve this problem.
 
@@ -129,7 +129,7 @@ $ git checkout feature-update-hello
 
 > Make sure you are in the `feature-update-hello` branch before moving on.
 
-### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (10/30)
+### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (10/32)
 
 - Make edits to `hello.txt`
 - Stage the changes
@@ -147,7 +147,7 @@ What does git diff do?
 
 > Don't forget to finish staging and committing after `git diff`
 
-## Merging - We do (5/35)
+## Merging - We do (5/37)
 Let's say we've got some good things going with our `feature` branch and we want those things in `master`.
 
 How do we merge our changes with the `master` branch? `git merge`
@@ -166,7 +166,7 @@ Fast-forward
  1 file changed, 1 insertion(+)
 ```
 
-## Git logs (5/40)
+## Git logs (5/42)
 
 We've made a couple of commits at this point. In order to see a history of the changes we've made, we can run `git log`
 
@@ -198,7 +198,7 @@ In reverse chronological order(most recent commits first) each commit contains:
 
 The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in our projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
 
-## MERGE CONFLICTS (15/55)
+## MERGE CONFLICTS (15/57)
 
 > Stop. Take a breath. Don't run. Don't be afraid. Except ... be a little afraid.
 
@@ -251,21 +251,17 @@ $ git add hello.txt
 $ git commit -m "fixes merge conflict in hello.txt"
 ```
 
-## Reset - You do (10/80)
-There are lots of ways to change the HEAD or the history of a branch.
+## Reset (10/67)
+There are lots of ways to change the history of a branch. In this lesson we'll be learning about reset.
 
 ### Definitions
 `HEAD` - the current branch
 
-`checkout` - switch branches or restore working tree files
-
 `reset` - resets the current HEAD to the specified state
 
-`revert` - revert the changes that the related patches introduce, records new commits.
+The most common use case for `reset` is doing work locally and wanting to rewind the work we've done
 
-The one we'll use today is `reset`. The most common use case for `reset` is doing work locally and wanting to rewind the work we've done
-
-> There is a more advanced git workshop, where we see the differences between `checkout`, `reset`, and `revert`. Check it out [here](https://github.com/andrewsunglaekim/advanced_git_workshop).
+> There is a more advanced git workshop, where we see the differences between `reset` and other methods. Additionally we'll dive much deeper into `reset` Check it out [here](https://github.com/andrewsunglaekim/advanced_git_workshop).
 
 ### ** \*DANGER\* ** The following can delete your history.
 You would only use this to remove part of your history.
@@ -281,7 +277,7 @@ This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in hi
 
 > the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
 
-### You do (10/90)
+### You do (10/77)
 Make 3 commits, follow the directions from the [above](#commitYouDo) commit section if you are unsure what to do. It doesn't matter what the content is since we will be rewinding it.
 
 Then run:
@@ -296,7 +292,7 @@ What's happened to your history?
     You should be exactly where you started.
 </details>
 
-## Remote Repositories
+## Remote Repositories (10/87)
 Everything we've done thus far has been done on our computers, in a *local* repository. Remote repositories live in places that are not our local machine. Hosting services, like Github and Bitbucket, allow us to place our repositories on the internet.
 
 Run the following command:
@@ -304,10 +300,10 @@ Run the following command:
 git remote -v
 ```
 
-If you've been following along from the beginning then you should see ... nothing. `git remote -v` lists all of our remote connections. Since we don't have any yet, we don't see any yet. Let's fix that.
+Despite everything we've done in our repository, we should see ... nothing. `git remote -v` lists all of our remote connections. Since we don't have any yet, we don't see any yet. Let's fix that.
 
 - Navigate to [Github](https://github.com/).
-- Log in to your personal account.
+- Log in to your personal account. (Create one if you don't have one, it's free!)
 - Click on the plus sign in the top right, then click 'New Repository'
 - Fill in Repository name with `github_workshop` or whatever your folder name is. It literally can be whatever you want, but for consistency it should be the same as your local repositories working directory.
 - Click 'Create repository'
@@ -355,8 +351,8 @@ Let's stop a moment. Consider what we've learned so far. Stop and think about th
 
 Now pair and chat about your answers for the next 3 minutes.
 
-## The Holy War - Git Workflows (10/100)
-There are holy wars fought over so many things in programming. Git workflows is definitely one that many have strong opinions about. Regardless of stance, here's a quick pattern that illustrates some of the key features with github.
+## The Holy War - Git Workflows
+There are holy wars fought over so many things in programming. Git workflows is definitely one that many have strong opinions about. Regardless of stance, here's a quick pattern that illustrates some of the key features in github.
 
 > We are now the new developer that came along and said "Hey, I would like to develop on the [git_workshop](https://github.com/andrewsunglaekim/git_workshop) as well". You can follow along by going into some different directory, something like this: `$ mkdir ~/temp && cd ~/temp`
 
@@ -396,26 +392,9 @@ Now we can go in and merge the PR.
 
 Always make sure your `feature` branch is up to date with whatever the clean version of your code.
 
-## Final collaboration - You do (15/115)
+### Closing (3/90)
 
-Find a partner, if you don't have one, find an existing pair to work with.
-
-> The series of directions will have `Person A` and `Person B` do certain things with version control. One of you will be `Person A` and one will be `Person B` if you have time, consider switching and doing the exercise again.
-
-- `Person A` creates a local git repository
-- `Person A` commits some changes to the repository
-- `Person A` creates a remote repository
-- `Person A` pushes local repository to remote repository
-- `Person B` clones the remote repository to their local machine
-- `Person B` checks out to a different branch
-- `Person B` commits changes
-- `Person B` pushes changes to the remote repository's branch
-> you may need to add your partner as a collaborator, check your settings under your project repo.
-
-- `Person B` submits pull request
-- `Person A` accepts/rejects pull request
-
-## Questions (5/120)
+There is significantly more to learn about git. This is really just the tip of the iceberg. Many of us think of git as just a means to save our code. But it can be so much more than that. It should be a tool that helps us rather than a tool that binds us. Armed with a strong git knowledge, developers create clean traversable histories that can make roll backs and merges happen seamlessly. Like anything that we do as developers, our git skills will only increase the more we practice it.
 
 ## Additional Info
 
