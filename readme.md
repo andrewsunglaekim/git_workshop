@@ -129,7 +129,7 @@ $ git checkout feature-update-hello
 
 > Make sure you are in the `feature-update-hello` branch before moving on.
 
-### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (10/32)
+### <a name="commitYouDo"></a>You do - Commit a change to `hello.txt` (5/27)
 
 - Make edits to `hello.txt`
 - Stage the changes
@@ -147,7 +147,7 @@ What does git diff do?
 
 > Don't forget to finish staging and committing after `git diff`
 
-## Merging - We do (5/37)
+## Merging - We do (5/32)
 Let's say we've got some good things going with our `feature` branch and we want those things in `master`.
 
 How do we merge our changes with the `master` branch? `git merge`
@@ -166,7 +166,7 @@ Fast-forward
  1 file changed, 1 insertion(+)
 ```
 
-## Git logs (5/42)
+## Git logs (5/37)
 
 We've made a couple of commits at this point. In order to see a history of the changes we've made, we can run `git log`
 
@@ -198,7 +198,7 @@ In reverse chronological order(most recent commits first) each commit contains:
 
 The important thing to note here is the `git SHA-1 checksum` but that's getting troublesome to say, so we'll say git SHA from here on out. In more or less words, it is a unique pointer to a snapshot in our projects history. We won't use this immediately, but we'll reference back to this when we revert commits.
 
-## MERGE CONFLICTS (15/57)
+## MERGE CONFLICTS (15/52)
 
 > Stop. Take a breath. Don't run. Don't be afraid. Except ... be a little afraid.
 
@@ -251,7 +251,7 @@ $ git add hello.txt
 $ git commit -m "fixes merge conflict in hello.txt"
 ```
 
-## Reset (10/67)
+## Reset (10/62)
 There are lots of ways to change the history of a branch. In this lesson we'll be learning about reset.
 
 ### Definitions
@@ -277,7 +277,7 @@ This will rewind the `HEAD` 3 commits. Meaning you will LOSE those commits in hi
 
 > the `hard` flag has to do with how the reset effects the index and working tree. It resets them. `HEAD~3` is where the working tree will reset to, in this case 3 commits behind the current `HEAD`.
 
-### You do (10/77)
+### You do (10/72)
 Make 3 commits, follow the directions from the [above](#commitYouDo) commit section if you are unsure what to do. It doesn't matter what the content is since we will be rewinding it.
 
 Then run:
@@ -292,7 +292,7 @@ What's happened to your history?
     You should be exactly where you started.
 </details>
 
-## Remote Repositories (10/87)
+## Remote Repositories (10/82)
 Everything we've done thus far has been done on our computers, in a *local* repository. Remote repositories live in places that are not our local machine. Hosting services, like Github and Bitbucket, allow us to place our repositories on the internet.
 
 Run the following command:
@@ -392,7 +392,7 @@ Now we can go in and merge the PR.
 
 Always make sure your `feature` branch is up to date with whatever the clean version of your code.
 
-### Closing (3/90)
+### Closing (3/85)
 
 There is significantly more to learn about git. This is really just the tip of the iceberg. Many of us think of git as just a means to save our code. But it can be so much more than that. It should be a tool that helps us rather than a tool that binds us. Armed with a strong git knowledge, developers create clean traversable histories that can make roll backs and merges happen seamlessly. Like anything that we do as developers, our git skills will only increase the more we practice it.
 
